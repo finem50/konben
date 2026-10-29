@@ -1,0 +1,125 @@
+/*
+ * No Google Fonts @import: the faces come from @fontsource packages imported
+ * in layout.tsx, so the app renders correctly on a box with no outbound internet.
+ */
+
+html, body { margin: 0; padding: 0; }
+body { background: #F6F6F3; }
+
+
+.konben {
+  --ink: #111111;
+  --board: #F6F6F3;
+  --paper: #FFFFFF;
+  --mustard: #F2B705;
+  --mustard-soft: #FFF1BF;
+  --brick: #D62828;
+  --brick-soft: #FBE1E1;
+  --green: #1E8E4E;
+  --green-soft: #DDF3E5;
+  --muted: #5E5E5A;
+  --rule: #D6D6D0;
+  font-family: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
+  color: var(--ink);
+  background: var(--board);
+  min-height: 100vh;
+  font-feature-settings: "tnum" 1;
+  -webkit-font-smoothing: antialiased;
+}
+.konben * { box-sizing: border-box; }
+.konben h1, .konben h2, .konben h3, .konben h4 {
+  font-family: 'Bricolage Grotesque Variable', 'Bricolage Grotesque', 'IBM Plex Sans', sans-serif;
+  font-weight: 800; letter-spacing: -0.02em; margin: 0;
+}
+.konben button { font-family: inherit; cursor: pointer; }
+.konben button:focus-visible, .konben input:focus-visible, .konben textarea:focus-visible {
+  outline: 2px solid var(--ink); outline-offset: 2px;
+}
+.konben-shell { max-width: 1180px; margin: 0 auto; padding: 20px 16px 96px; }
+
+.konben-top { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 18px; }
+.konben-mark { display: flex; align-items: baseline; gap: 10px; }
+.konben-mark h1 { font-size: 30px; box-shadow: inset 0 -0.35em 0 var(--mustard); }
+.konben-mark span { font-size: 13px; color: var(--muted); }
+
+.konben-tabs { display: flex; gap: 4px; flex-wrap: wrap; border-bottom: 1px solid var(--rule); margin-bottom: 18px; }
+.konben-tab { border: none; background: none; padding: 8px 2px; margin-right: 14px; font-size: 15px; font-weight: 500; color: var(--muted); border-bottom: 2px solid transparent; }
+.konben-tab[data-on="true"] { color: var(--ink); border-bottom-color: var(--mustard); border-bottom-width: 3px; font-weight: 600; }
+
+.konben-card { background: var(--paper); border: 1px solid var(--rule); border-radius: 4px; }
+.konben-btn { border: 1px solid var(--ink); background: var(--ink); color: var(--paper); border-radius: 3px; padding: 9px 14px; font-size: 14px; font-weight: 500; }
+.konben-btn[disabled] { opacity: .45; cursor: not-allowed; }
+.konben-btn-ghost { border: 1px solid var(--rule); background: transparent; color: var(--ink); border-radius: 3px; padding: 7px 12px; font-size: 13px; font-weight: 500; }
+.konben-btn-ghost:hover { border-color: var(--ink); }
+.konben-toggle { padding: 5px 9px; font-size: 12px; }
+.konben-toggle[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+.konben-roll { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-bottom: 14px; font-size: 13px; color: var(--muted); }
+.konben-roll > span { margin-right: 4px; }
+.konben-roll > .konben-btn { margin-left: 6px; }
+.konben-prio { border: 0; padding: 0; margin-top: -6px; }
+.konben-prio > legend { float: left; margin-right: 6px; padding: 0; }
+.konben-prio > label { display: inline-flex; align-items: center; gap: 5px; padding: 4px 9px; border: 1px solid var(--rule); border-radius: 2px; color: var(--ink); cursor: pointer; }
+.konben-prio > label:has(input:checked) { border-color: var(--ink); background: var(--mustard-soft); }
+.konben-prio > label[data-off="true"] { opacity: 0.5; cursor: default; }
+.konben-prio > label > input { accent-color: var(--ink); margin: 0; }
+.konben-prio > label > small { color: var(--muted); font-size: 11px; }
+
+.konben-week { display: grid; gap: 10px; grid-template-columns: repeat(7, minmax(0, 1fr)); }
+@media (max-width: 1000px) { .konben-week { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .konben-week { grid-template-columns: 1fr; } }
+
+.konben-day { display: flex; flex-direction: column; padding: 11px; min-height: 172px; }
+.konben-day[data-today="true"] { border-color: var(--ink); border-width: 2px; box-shadow: 0 4px 0 var(--mustard); }
+.konben-day[data-target="true"] { outline: 2px dashed var(--mustard); outline-offset: -4px; cursor: pointer; }
+.konben-day[data-dragging="true"] { opacity: .5; }
+.konben-move { position: absolute; top: 4px; right: 4px; border: none; background: none; color: var(--muted); font-size: 14px; line-height: 1; padding: 2px; }
+.konben-move:hover, .konben-move[aria-pressed="true"] { color: var(--ink); }
+.konben-daytop { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 9px; }
+.konben-daytop b { font-size: 15px; font-family: 'Bricolage Grotesque Variable', 'Bricolage Grotesque', sans-serif; }
+.konben-daytop i { font-style: normal; font-size: 12px; color: var(--muted); }
+
+.konben-add { width: 100%; flex: 1; text-align: left; border: 1px dashed var(--rule); background: none; color: var(--muted); border-radius: 3px; padding: 10px; font-size: 13px; }
+.konben-add:hover { border-color: var(--ink); color: var(--ink); }
+
+.konben-chip { width: 100%; text-align: left; border: none; border-left: 3px solid var(--mustard); background: var(--mustard-soft); border-radius: 0 3px 3px 0; padding: 9px 10px; flex: 1; }
+.konben-chip b { display: block; font-size: 13px; font-weight: 600; line-height: 1.3; margin-bottom: 5px; }
+.konben-chip span { display: block; font-size: 11px; color: var(--muted); }
+.konben-chip em { display: block; font-style: normal; font-size: 11px; font-weight: 600; color: var(--green); margin-top: 5px; }
+
+.konben-left { width: 100%; text-align: left; border: 1px solid var(--rule); border-left: 3px dotted var(--mustard); background: none; border-radius: 0 3px 3px 0; padding: 9px 10px; flex: 1; }
+.konben-left b { display: block; font-size: 13px; font-weight: 600; line-height: 1.3; margin-bottom: 5px; }
+.konben-left span { display: block; font-size: 11px; color: var(--muted); }
+.konben-left em { display: block; font-style: normal; font-size: 11px; font-weight: 600; margin-bottom: 5px; }
+
+.konben-pill { display: inline-block; border: 1px solid var(--rule); border-radius: 999px; padding: 2px 9px; font-size: 11px; color: var(--muted); margin: 0 6px 4px 0; }
+.konben-grid { display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+.konben-input { border: 1px solid var(--rule); background: var(--paper); border-radius: 3px; padding: 9px 11px; font-size: 14px; font-family: inherit; color: var(--ink); width: 100%; }
+
+.konben-item { display: flex; gap: 10px; align-items: flex-start; padding: 8px 0; border-bottom: 1px solid var(--rule); }
+.konben-item:last-child { border-bottom: none; }
+.konben-item[data-done="true"] { opacity: .55; }
+.konben-item[data-done="true"] .konben-check { background: var(--green); border-color: var(--green); color: var(--paper); }
+.konben-item[data-done="true"] .konben-item-name { text-decoration: line-through; }
+.konben-item-name { font-size: 14px; font-weight: 500; }
+.konben-item-sub { font-size: 11px; color: var(--muted); margin-top: 2px; }
+.konben-check { width: 18px; height: 18px; border: 1px solid var(--ink); border-radius: 2px; background: none; flex: none; margin-top: 2px; color: var(--ink); display: flex; align-items: center; justify-content: center; font-size: 12px; padding: 0; line-height: 1; }
+
+.konben-scrim { position: fixed; inset: 0; background: rgba(17,17,17,.5); display: flex; align-items: flex-end; justify-content: center; z-index: 50; }
+@media (min-width: 700px) { .konben-scrim { align-items: center; } }
+.konben-modal { background: var(--paper); border: 1px solid var(--ink); border-radius: 4px; width: 100%; max-width: 560px; max-height: 88vh; overflow: auto; padding: 18px; }
+
+
+
+.konben-stat { display: flex; align-items: baseline; gap: 8px; }
+.konben-stat b { font-family: 'Bricolage Grotesque Variable', 'Bricolage Grotesque', sans-serif; font-size: 26px; }
+.konben-stat span { font-size: 12px; color: var(--muted); }
+.konben-bar { height: 6px; background: var(--rule); border-radius: 999px; overflow: hidden; margin-top: 6px; }
+.konben-bar div { height: 100%; background: var(--green); }
+.konben-bar[data-over="true"] div { background: var(--brick); }
+
+.konben-empty { padding: 26px 16px; text-align: center; color: var(--muted); font-size: 14px; }
+.konben-kit-head { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; padding-bottom: 9px; border-bottom: 2px solid var(--ink); margin-bottom: 10px; }
+.konben-sub { font-size: 12px; color: var(--muted); font-weight: 500; margin: 14px 0 4px; }
+.konben-note { background: var(--mustard-soft); border-radius: 3px; padding: 9px 11px; font-size: 12px; line-height: 1.5; }
+
+@media (prefers-reduced-motion: reduce) { .konben * { animation: none !important; transition: none !important; } }

@@ -1,0 +1,15 @@
+node_modules
+.next
+next-env.d.ts
+.env
+*.db
+*.db-shm
+*.db-wal
+.DS_Store
+*.tsbuildinfo
+.env*.local
+
+# Private: copyrighted source cards, the deploy runbook, local agents and skills
+hf-recipes/
+CLAUDE.local.md
+.claude/

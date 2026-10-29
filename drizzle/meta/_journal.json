@@ -1,0 +1,55 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1788740047690,
+      "tag": "0000_robust_apocalypse",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1788742132974,
+      "tag": "0001_rich_matthew_murdock",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1788744253972,
+      "tag": "0002_past_prowler",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "6",
+      "when": 1791910727712,
+      "tag": "0003_absent_rogue",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "6",
+      "when": 1792114184373,
+      "tag": "0004_seed_recipes",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "6",
+      "when": 1792114233744,
+      "tag": "0005_gray_miss_america",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "6",
+      "when": 1792160687024,
+      "tag": "0006_week_starts_sunday",
+      "breakpoints": true
+    }
+  ]
+}
