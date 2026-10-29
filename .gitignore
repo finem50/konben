@@ -11,7 +11,7 @@ next-env.d.ts
 
 # Private: copyrighted source cards, the deploy runbook, local agents and skills
 hf-recipes/
-CLAUDE.local.md
 .claude/
 CLAUDE.md
 AGENTS.md
+REQUIREMENTS.md

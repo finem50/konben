@@ -8,5 +8,4 @@ node_modules
 .DS_Store
 *.tsbuildinfo
 hf-recipes
-CLAUDE.local.md
 .claude
