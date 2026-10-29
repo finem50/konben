@@ -13,3 +13,5 @@ next-env.d.ts
 hf-recipes/
 CLAUDE.local.md
 .claude/
+CLAUDE.md
+AGENTS.md
