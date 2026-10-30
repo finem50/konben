@@ -6,6 +6,9 @@ merged shopping list, and macros a plate.
 A dinner that keeps can be cooked double, which turns the night after into a
 no-cook night and buys its ingredients only once. That rule is the whole app.
 
+For a tour of the tabs, the data model and the full list of mutations, see the
+[field guide](DOCS.md).
+
 ## Running it
 
 ```sh
